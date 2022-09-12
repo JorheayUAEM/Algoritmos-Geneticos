@@ -1,4 +1,5 @@
 import math
+import pandas as pd 
 
 def binToDec(binarios):
     decimales = []
@@ -15,10 +16,7 @@ def binToDec(binarios):
     return decimales
 
 
-def decToReal(decimales, ristra):
-    
-    xmin = int(input("Ingresa X minima: "))
-    xmax = int(input("Ingresa X maxima: "))
+def decToReal(decimales, ristra, xmax, xmin):
     reales = []
     for decimal in decimales:
         aux = (xmax - xmin) / (2**ristra - 1)
@@ -36,3 +34,14 @@ def realToAdap(reales):
         res = aux + part
         adapt.append(res)
     return adapt       
+
+
+def genFrame(ind, dec, rea, adap):
+    df = pd.DataFrame()
+    df["INDIVIDUO"] = ind
+    df["DECIMAL"] = dec
+    df["REAL"] = rea
+    df["ADAPTADO"] = adap
+    df = df.sort_values("ADAPTADO", ascending=False)
+    df.reset_index(inplace = True, drop = True)
+    return df
