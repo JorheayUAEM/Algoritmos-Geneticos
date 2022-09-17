@@ -2,6 +2,7 @@ import random
 
 from transform import *
 from CruceDeUnPunto import cruceDeUnPunto
+from CruceDeDosPuntos import cruceDeDosPuntos
 
 def principal():
 
@@ -23,8 +24,12 @@ def principal():
     frame = genFrame(individuo, decimales, reales, adaptados)
     print(frame)
 
+    print("------------------------CRUCE DE UN PUNTO-------------------------")
     new_frame = cruceDeUnPunto(frame, poblacion, ristra, xmax, xmin)
     print(new_frame)
 
+    print("------------------------CRUCE DE DOS PUNTOS---------------------------")
+    frame_dos_puntos = cruceDeDosPuntos(frame, poblacion, ristra, xmax, xmin)
+    print(frame_dos_puntos)
 
 principal()
